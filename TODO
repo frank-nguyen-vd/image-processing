@@ -4,7 +4,7 @@ Create assets library:
   ✔ Store images with different size in `./assets` folder @started(21-05-29 22:16) @done(21-05-29 22:18) @lasted(2m49s)
 
 Create API Endpoints:
-  - Handle `GET /images`
+  - Handle `GET /images` @started(21-05-29 22:21)
     Return a list of image names stored in the filesystem
     - Test if the endpoint returns 200 with the correct list of images
 
