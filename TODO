@@ -1,7 +1,7 @@
 Image Processing Web API
 
 Create assets library:
-  - Store images with different size in `./assets` folder
+  ✔ Store images with different size in `./assets` folder @started(21-05-29 22:16) @done(21-05-29 22:18) @lasted(2m49s)
 
 Create API Endpoints:
   - Handle `GET /images`
