@@ -39,7 +39,7 @@ imagesController.get(
         }
 
         // Return only one image that matches given `filename`
-        const foundImage = file.findImageByName(
+        const foundImage = file.findOneImageByName(
             files,
             req.query.filename as string
         );
