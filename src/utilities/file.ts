@@ -17,12 +17,21 @@ export function splitNameAndExt(filename: string): Array<string> {
     return [name, ext];
 }
 
-export function findImageByName(images: string[], imageName: string): string {
-    for (let i = 0; i < images.length; i++) {
-        const [name, ext] = splitNameAndExt(images[i]);
-        if (name === imageName) {
-            return images[i];
-        }
-    }
-    return '';
+export function findImagesByName(
+    images: string[],
+    imageName: string
+): string[] {
+    return images.filter((image) => {
+        const [name, ext] = splitNameAndExt(image);
+        return name === imageName;
+    });
+}
+
+export function findOneImageByName(
+    images: string[],
+    imageName: string
+): string {
+    const result = findImagesByName(images, imageName);
+    if (result.length === 0) return '';
+    return result[0];
 }
