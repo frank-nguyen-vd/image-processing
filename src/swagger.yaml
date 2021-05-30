@@ -8,23 +8,24 @@ servers:
       description: Development Server
 components:
     schemas:
-        Image:
+        Error:
             properties:
-                filename:
+                success:
+                    type: boolean
+                    example: false
+                error:
                     type: string
-                    required: true
-                payload:
-                    type: string
-                    required: false
-        GET_images_response:
+        GET_images:
             properties:
                 success:
                     type: boolean
                     required: true
+                    example: true
                 images:
                     type: array
                     items:
-                        $ref: '#/components/schemas/Image'
+                        type: string
+                        example: 'sunrise.jpg'
 paths:
     /images:
         get:
@@ -50,8 +51,33 @@ paths:
 
             responses:
                 '200': # status code
-                    description: List of images
+                    description: Return a list of filenames
                     content:
                         application/json:
                             schema:
-                                $ref: '#/components/schemas/GET_images_response'
+                                $ref: '#/components/schemas/GET_images'
+
+                '201': # status code
+                    description: Return an image file
+                    content:
+                        text/plain:
+                            schema:
+                                type: object
+                '400': # status code
+                    description: Bad request
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                '404': # status code
+                    description: Not found
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                '500': # status code
+                    description: Internal server error
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
