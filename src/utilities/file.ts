@@ -1,12 +1,18 @@
 import { promises as fs } from 'fs';
+import path from 'path';
 import * as fsx from 'fs';
 
-export async function listFilesInDir(path: string): Promise<string[]> {
-    return fs.readdir(path);
+export async function listFilesInDir(dirPath: string): Promise<string[]> {
+    createFolderIfNotExists(path.join(dirPath, '..'));
+    return fs.readdir(dirPath);
 }
 
 export function existsFile(filePath: string): boolean {
     return fsx.existsSync(filePath);
+}
+
+export function createFolderIfNotExists(dirPath: string) {
+    if (!fsx.existsSync(dirPath)) fsx.mkdirSync(dirPath);
 }
 
 export function splitNameAndExt(filename: string): Array<string> {
