@@ -52,9 +52,14 @@ imagesController.get(
         }
 
         // Extract height and width parameters from query
-        let height: number, width: number;
+        let height: number = 0;
+        let width: number = 0;
         try {
             const parseParam = (param: string) => {
+                if (!/^[0-9]+$/.test(param)) {
+                    throw new Error();
+                }
+
                 const output = parseInt(param);
                 if (output < 0) throw new Error();
                 return output;
