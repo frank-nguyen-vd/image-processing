@@ -65,8 +65,10 @@ imagesController.get(
                 return output;
             };
 
-            height = parseParam(req.query.height as string);
-            width = parseParam(req.query.width as string);
+            if (typeof req.query.height === 'string')
+                height = parseParam(req.query.height);
+            if (typeof req.query.width === 'string')
+                width = parseParam(req.query.width as string);
         } catch {
             return res.status(400).json({
                 success: false,

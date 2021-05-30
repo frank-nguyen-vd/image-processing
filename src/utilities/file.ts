@@ -1,5 +1,4 @@
 import { promises as fs } from 'fs';
-import path from 'path';
 import * as fsx from 'fs';
 
 export function existsFile(filePath: string): boolean {
@@ -11,7 +10,7 @@ export function createFolderIfNotExists(dirPath: string): void {
 }
 
 export async function listFilesInDir(dirPath: string): Promise<string[]> {
-    createFolderIfNotExists(path.join(dirPath, '..'));
+    createFolderIfNotExists(dirPath);
     return fs.readdir(dirPath);
 }
 

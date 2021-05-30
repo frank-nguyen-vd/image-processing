@@ -32,6 +32,6 @@ export const logConfig = {
         }
     },
     categories: {
-        default: { appenders: ['app', 'info', 'error'], level: 'TRACE' }
+        default: { appenders: ['app', 'info', 'error'], level: 'WARN' }
     }
 };
