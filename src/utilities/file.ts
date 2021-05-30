@@ -2,17 +2,17 @@ import { promises as fs } from 'fs';
 import path from 'path';
 import * as fsx from 'fs';
 
-export async function listFilesInDir(dirPath: string): Promise<string[]> {
-    createFolderIfNotExists(path.join(dirPath, '..'));
-    return fs.readdir(dirPath);
-}
-
 export function existsFile(filePath: string): boolean {
     return fsx.existsSync(filePath);
 }
 
-export function createFolderIfNotExists(dirPath: string) {
+export function createFolderIfNotExists(dirPath: string): void {
     if (!fsx.existsSync(dirPath)) fsx.mkdirSync(dirPath);
+}
+
+export async function listFilesInDir(dirPath: string): Promise<string[]> {
+    createFolderIfNotExists(path.join(dirPath, '..'));
+    return fs.readdir(dirPath);
 }
 
 export function splitNameAndExt(filename: string): Array<string> {
@@ -28,7 +28,7 @@ export function findImagesByName(
     imageName: string
 ): string[] {
     return images.filter((image) => {
-        const [name, ext] = splitNameAndExt(image);
+        const [name] = splitNameAndExt(image);
         return name === imageName;
     });
 }

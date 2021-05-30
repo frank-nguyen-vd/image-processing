@@ -6,7 +6,7 @@ export async function createScaledImage(
     scaledImagePath: string,
     width: number,
     height: number
-) {
+): Promise<void> {
     file.createFolderIfNotExists(path.join(scaledImagePath, '..'));
     if (!file.existsFile(scaledImagePath)) {
         const _height = height == 0 ? undefined : height;
@@ -14,7 +14,6 @@ export async function createScaledImage(
         await sharp(originalImagePath)
             .resize(_width, _height)
             .toFile(scaledImagePath)
-            .then((info) => {})
             .catch((err) => {
                 throw new Error(err);
             });

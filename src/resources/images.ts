@@ -1,6 +1,5 @@
 import express from 'express';
 import log4js from 'log4js';
-import sharp from 'sharp';
 import path from 'path';
 import * as file from '../utilities/file';
 import * as image from '../utilities/image';
@@ -55,16 +54,14 @@ imagesController.get(
         // Extract height and width parameters from query
         let height: number, width: number;
         try {
-            const parseParam = (param: any) => {
-                if (typeof param != 'string') return 0;
-
-                const output = parseInt(param as string);
+            const parseParam = (param: string) => {
+                const output = parseInt(param);
                 if (output < 0) throw new Error();
                 return output;
             };
 
-            height = parseParam(req.query.height);
-            width = parseParam(req.query.width);
+            height = parseParam(req.query.height as string);
+            width = parseParam(req.query.width as string);
         } catch {
             return res.status(400).json({
                 success: false,
@@ -92,7 +89,7 @@ imagesController.get(
             });
         }
 
-        var options = {
+        const options = {
             root: path.join(process.cwd(), scaledDir)
         };
         res.status(201).sendFile(scaledImage, options, (err) => {
