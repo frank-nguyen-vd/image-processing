@@ -23,7 +23,7 @@ Test helper functions:
   ✘ Test utilities/image @cancelled(21-05-30 16:19)
 
 Documentation:
-  - Write guide on how to run the application in development and production
-  - Write guide on how to test the application (using Jasmine, Supertest and Postman)
-  - Write guide on how to read the logs (using log4js)
-  - Write guide on how to access API documentation (using Swagger)
+  ✔ Write guide on how to run the application in development and production @done(21-05-30 16:54)
+  ✔ Write guide on how to test the application (using Jasmine, Supertest and Postman) @done(21-05-30 16:55)
+  ✔ Write guide on how to read the logs (using log4js) @done(21-05-30 20:31)
+  ✔ Write guide on how to access API documentation (using Swagger) @done(21-05-30 20:25)
