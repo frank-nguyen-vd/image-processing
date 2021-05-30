@@ -1,5 +1,5 @@
 import supertest from 'supertest';
-import * as sut from '../index';
+import * as sut from '../../index';
 
 const request = supertest(sut.app);
 
@@ -36,6 +36,28 @@ describe('GET /images', () => {
     it('returns an error upon GET /api/v1/images?filename=sunrise&width=100&height=-1', async () => {
         const response = await request.get(
             '/api/v1/images?filename=sunrise&width=100&height=-1'
+        );
+        expect(response.status).toBe(400);
+        expect(response.body.success).toBeFalse();
+        expect(response.body.error).toBe(
+            'Image dimensions must be non-negative integers'
+        );
+    });
+
+    it('returns an error upon GET /api/v1/images?filename=sunrise&width=abc&height=100', async () => {
+        const response = await request.get(
+            '/api/v1/images?filename=sunrise&width=abc&height=100'
+        );
+        expect(response.status).toBe(400);
+        expect(response.body.success).toBeFalse();
+        expect(response.body.error).toBe(
+            'Image dimensions must be non-negative integers'
+        );
+    });
+
+    it('returns an error upon GET /api/v1/images?filename=sunrise&width=100&height=abc', async () => {
+        const response = await request.get(
+            '/api/v1/images?filename=sunrise&height=abc&width=100'
         );
         expect(response.status).toBe(400);
         expect(response.body.success).toBeFalse();
