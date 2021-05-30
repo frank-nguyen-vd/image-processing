@@ -4,11 +4,11 @@ Create assets library:
   ✔ Store images with different size in `./assets` folder @started(21-05-29 22:16) @done(21-05-29 22:18) @lasted(2m49s)
 
 Create API Endpoints:
-  ✔ Handle `GET /images` @started(21-05-29 22:21)
+  ✔ Handle `GET /images` @started(21-05-29 22:21) @done(21-05-30 14:19) @lasted(15h58m58s)
     ✔ Return a list of image names stored in the file system @started(21-05-29 22:21) @done(21-05-29 23:40) @lasted(1h19m9s)
-    - Return the image without resizing @started(21-05-29 23:40)
-    - Return the resized image given `width` and `height`
-    - Cache resized image with given dimensions for repeated requests
+    ✔ Return the image without resizing @started(21-05-30 09:26) @done(21-05-30 14:19) @lasted(4h53m34s)
+    ✔ Return the resized image given `width` and `height` @started(21-05-30 14:19) @done(21-05-30 14:19) @lasted(40s)
+    ✔ Cache resized image with given dimensions for repeated requests @started(21-05-30 14:19) @done(21-05-30 14:19) @lasted(52s)
 
   - Test `GET /images`
     - Test if the endpoint returns 200 with the correct list of images
