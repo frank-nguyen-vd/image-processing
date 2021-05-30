@@ -1,41 +1,83 @@
 openapi: 3.0.0
 info:
-    title: Sample API
-    description: Optional
-    version: 0.1.9
+    title: Image Processing API
+    description: An API that allows to resize images
+    version: 0.0.1
 servers:
     - url: http://localhost:3000/api/v1
-      description: Optional server description, e.g. Main (production) server
+      description: Development Server
+components:
+    schemas:
+        Error:
+            properties:
+                success:
+                    type: boolean
+                    example: false
+                error:
+                    type: string
+        GET_images:
+            properties:
+                success:
+                    type: boolean
+                    required: true
+                    example: true
+                images:
+                    type: array
+                    items:
+                        type: string
+                        example: 'sunrise.jpg'
 paths:
-    /users:
+    /images:
         get:
             tags:
-                - Users
-            summary: Returns a list of users.
-            description: Optional
+                - Images
+            summary: Returns an image or a list of images in filesystem.
+            parameters:
+                - in: query
+                  name: filename
+                  description: The name of the image
+                  type: string
+                  required: false
+                - in: query
+                  name: width
+                  description: The target width of the image
+                  type: string
+                  required: false
+                - in: query
+                  name: height
+                  description: The target height of the image
+                  type: string
+                  required: false
+
             responses:
                 '200': # status code
-                    description: List of users
+                    description: Return a list of filenames
                     content:
                         application/json:
                             schema:
+                                $ref: '#/components/schemas/GET_images'
+
+                '201': # status code
+                    description: Return an image file
+                    content:
+                        text/plain:
+                            schema:
                                 type: object
-                                properties:
-                                    success:
-                                        type: boolean
-    /products:
-        get:
-            tags:
-                - Products
-            summary: Returns a list of products.
-            description: Optional
-            responses:
-                '200': # status code
-                    description: List of products
+                '400': # status code
+                    description: Bad request
                     content:
                         application/json:
                             schema:
-                                type: object
-                                properties:
-                                    success:
-                                        type: boolean
+                                $ref: '#/components/schemas/Error'
+                '404': # status code
+                    description: Not found
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                '500': # status code
+                    description: Internal server error
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
