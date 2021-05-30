@@ -1,21 +1,26 @@
 Image Processing Web API
 
 Create assets library:
-  ✔ Store images with different size in `./assets` folder @started(21-05-29 22:16) @done(21-05-29 22:18) @lasted(2m49s)
+  ✔ Store images with different size in `./assets` folder @done(21-05-30 16:19)
 
 Create API Endpoints:
-  ✔ Handle `GET /images` @started(21-05-29 22:21) @done(21-05-30 14:19) @lasted(15h58m58s)
-    ✔ Return a list of image names stored in the file system @started(21-05-29 22:21) @done(21-05-29 23:40) @lasted(1h19m9s)
-    ✔ Return the image without resizing @started(21-05-30 09:26) @done(21-05-30 14:19) @lasted(4h53m34s)
-    ✔ Return the resized image given `width` and `height` @started(21-05-30 14:19) @done(21-05-30 14:19) @lasted(40s)
-    ✔ Cache resized image with given dimensions for repeated requests @started(21-05-30 14:19) @done(21-05-30 14:19) @lasted(52s)
+  ✔ Handle `GET /images` @done(21-05-30 16:18)
+    ✔ Return a list of image names stored in the file system @done(21-05-30 16:19)
+    ✔ Return the image without resizing @done(21-05-30 16:19)
+    ✔ Return the resized image given `width` and `height` @done(21-05-30 16:19)
+    ✔ Cache resized image with given dimensions for repeated requests @done(21-05-30 16:19)
 
-  - Test `GET /images`
-    - Test if the endpoint returns 200 with the correct list of images
-    - Test if the endpoint returns 200 with the correct image given `filename`  
-    - Test if the endpoint returns 404 given not existing `filename`
-    - Test if the endpoint returns 200 with the correct image and correct sizes
-    - Test if the endpoint returns 400 given invalid dimensions such as non-positive or decimal numbers
+Test API Endpoints:
+  ✔ Test `GET /images` @done(21-05-30 16:19)
+    ✔ Test if the endpoint returns 200 with the correct list of images @done(21-05-30 16:19)
+    ✔ Test if the endpoint returns 200 with the correct image given `filename` @done(21-05-30 16:19)
+    ✔ Test if the endpoint returns 404 given not existing `filename` @done(21-05-30 16:19)
+    ✔ Test if the endpoint returns 200 with the correct image and correct sizes @done(21-05-30 16:19)
+    ✔ Test if the endpoint returns 400 given invalid dimensions such as non-positive or decimal numbers @done(21-05-30 16:19)
+
+Test helper functions:
+  ✔ Test utilities/file @done(21-05-30 16:19)
+  ✘ Test utilities/image @cancelled(21-05-30 16:19)
 
 Documentation:
   - Write guide on how to run the application in development and production
