@@ -1,0 +1,29 @@
+Image Processing Web API
+
+Create assets library:
+  ✔ Store images with different size in `./assets` folder @done(21-05-30 16:19)
+
+Create API Endpoints:
+  ✔ Handle `GET /images` @done(21-05-30 16:18)
+    ✔ Return a list of image names stored in the file system @done(21-05-30 16:19)
+    ✔ Return the image without resizing @done(21-05-30 16:19)
+    ✔ Return the resized image given `width` and `height` @done(21-05-30 16:19)
+    ✔ Cache resized image with given dimensions for repeated requests @done(21-05-30 16:19)
+
+Test API Endpoints:
+  ✔ Test `GET /images` @done(21-05-30 16:19)
+    ✔ Test if the endpoint returns 200 with the correct list of images @done(21-05-30 16:19)
+    ✔ Test if the endpoint returns 200 with the correct image given `filename` @done(21-05-30 16:19)
+    ✔ Test if the endpoint returns 404 given not existing `filename` @done(21-05-30 16:19)
+    ✔ Test if the endpoint returns 200 with the correct image and correct sizes @done(21-05-30 16:19)
+    ✔ Test if the endpoint returns 400 given invalid dimensions such as non-positive or decimal numbers @done(21-05-30 16:19)
+
+Test helper functions:
+  ✔ Test utilities/file @done(21-05-30 16:19)
+  ✘ Test utilities/image @cancelled(21-05-30 16:19)
+
+Documentation:
+  ✔ Write guide on how to run the application in development and production @done(21-05-30 16:54)
+  ✔ Write guide on how to test the application (using Jasmine, Supertest and Postman) @done(21-05-30 16:55)
+  ✔ Write guide on how to read the logs (using log4js) @done(21-05-30 20:31)
+  ✔ Write guide on how to access API documentation (using Swagger) @done(21-05-30 20:25)
