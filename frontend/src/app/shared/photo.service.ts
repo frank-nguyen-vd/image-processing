@@ -7,9 +7,18 @@ import { HttpClient } from '@angular/common/http';
     providedIn: 'root'
 })
 export class PhotoService {
+    imageBaseUrl = 'http://localhost:3000/api/v1/images';
     constructor(private http: HttpClient) {}
 
     getPhotoNames(): Observable<Photo[]> {
-        return this.http.get<Photo[]>('http://localhost:3000/api/v1/images');
+        return this.http.get<Photo[]>(this.imageBaseUrl);
+    }
+
+    getPhotoWithSize(
+        name: string,
+        width: number = 0,
+        height: number = 0
+    ): string {
+        return `${this.imageBaseUrl}?filename=${name}&width=${width}&height=${height}`;
     }
 }
