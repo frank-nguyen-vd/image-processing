@@ -8,8 +8,12 @@ Zoom
     (change)="updateSetting($event)"
 ></mat-slider>
 
-<mat-grid-list cols="{{ photosPerRow }}" rowHeight="1:1" col>
+<mat-grid-list cols="{{ photosPerRow }}">
     <mat-grid-tile *ngFor="let photo of photos" colspan="1" rowspan="1">
-        <app-photo [photo]="photo"></app-photo>
+        <app-photo
+            [photo]="photo"
+            [width]="photoWidth"
+            [height]="photoHeight"
+        ></app-photo>
     </mat-grid-tile>
 </mat-grid-list>

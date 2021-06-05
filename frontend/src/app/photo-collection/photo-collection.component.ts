@@ -11,6 +11,8 @@ import { Photo } from '../models/photo';
 export class PhotoCollectionComponent implements OnInit {
     photos: Photo[] = [];
     photosPerRow: number = 0;
+    photoWidth: number = 0;
+    photoHeight: number = 0;
 
     constructor(private photoService: PhotoService) {}
 
@@ -22,5 +24,7 @@ export class PhotoCollectionComponent implements OnInit {
 
     updateSetting(event: any) {
         this.photosPerRow = event.value;
+        this.photoWidth = 100 * (10 - this.photosPerRow + 1);
+        this.photoHeight = 100 * (10 - this.photosPerRow + 1);
     }
 }
