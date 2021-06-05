@@ -1,4 +1,5 @@
 import { Component, Injectable, OnInit } from '@angular/core';
+import { PhotoService } from '../shared/photo.service';
 import { Photo } from '../models/photo';
 
 @Injectable()
@@ -10,14 +11,11 @@ import { Photo } from '../models/photo';
 export class PhotoCollectionComponent implements OnInit {
     photos: Photo[] = [];
 
-    constructor() {}
+    constructor(private photoService: PhotoService) {}
 
     ngOnInit(): void {
-        this.photos = [
-            { id: 1, name: 'spring' },
-            { id: 2, name: 'summer' },
-            { id: 3, name: 'autumn' },
-            { id: 4, name: 'winter' }
-        ];
+        this.photoService.getPhotoNames().subscribe((res) => {
+            this.photos = res;
+        });
     }
 }
