@@ -5,10 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PhotoCollectionComponent } from './photo-collection/photo-collection.component';
 import { PhotoComponent } from './photo/photo.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
     declarations: [AppComponent, PhotoCollectionComponent, PhotoComponent],
-    imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+    imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule],
     providers: [],
     bootstrap: [AppComponent]
 })
