@@ -18,23 +18,25 @@ imagesController.get(
 
         // Get a list of filename in a folder
         let files;
+        let names;
         try {
             files = await file.listFilesInDir(originalDir);
+            names = files.map((filename) => file.splitNameAndExt(filename)[0]);
         } catch {
             log.error("Folder 'assets' does not exist");
             // Handle scenario which folder `assets` does not exist
             return res.status(500).json({
-                success: false,
                 error: "Folder 'assets' does not exist"
             });
         }
 
         // Return the list of filename if no target filename is given
         if (typeof req.query.filename != 'string') {
-            return res.status(200).json({
-                success: true,
-                images: files
-            });
+            return res.status(200).json(
+                names.map((item, index) => {
+                    return { id: index, name: item };
+                })
+            );
         }
 
         // Return only one image that matches given `filename`
@@ -46,7 +48,6 @@ imagesController.get(
 
         if (foundImage === '') {
             return res.status(404).json({
-                success: false,
                 error: 'Image not found'
             });
         }
@@ -71,7 +72,6 @@ imagesController.get(
                 width = parseParam(req.query.width as string);
         } catch {
             return res.status(400).json({
-                success: false,
                 error: 'Image dimensions must be non-negative integers'
             });
         }
@@ -80,7 +80,6 @@ imagesController.get(
         const scaledImage = imageName + `_${width}x${height}.` + imageExt;
         const scaledImagePath = scaledDir + '/' + scaledImage;
         const originalImagePath = originalDir + '/' + foundImage;
-
         try {
             await image.createScaledImage(
                 originalImagePath,
@@ -91,7 +90,6 @@ imagesController.get(
         } catch {
             log.error('Error while creating the scaled image');
             return res.status(500).json({
-                success: false,
                 error: 'Error while creating the scaled image'
             });
         }
