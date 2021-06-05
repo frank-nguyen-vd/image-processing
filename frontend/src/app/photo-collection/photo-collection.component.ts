@@ -10,9 +10,9 @@ import { Photo } from '../models/photo';
 })
 export class PhotoCollectionComponent implements OnInit {
     photos: Photo[] = [];
-    photosPerRow: number = 0;
-    photoWidth: number = 0;
-    photoHeight: number = 0;
+    photosPerRow: number = 1;
+    photoWidth: number = 1000;
+    photoHeight: number = 1000;
 
     constructor(private photoService: PhotoService) {}
 
