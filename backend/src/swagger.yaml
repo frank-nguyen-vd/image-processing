@@ -10,22 +10,13 @@ components:
     schemas:
         Error:
             properties:
-                success:
-                    type: boolean
-                    example: false
                 error:
                     type: string
         GET_images:
-            properties:
-                success:
-                    type: boolean
-                    required: true
-                    example: true
-                images:
-                    type: array
-                    items:
-                        type: string
-                        example: 'sunrise.jpg'
+            type: array
+            items:
+                type: string
+                example: 'sunrise'
 paths:
     /images:
         get:
