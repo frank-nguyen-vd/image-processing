@@ -1,7 +1,14 @@
 # IMAGE PROCESSING API
 
-To test and run this project, open a terminal at project folder and then
+To test and run this project, please run backend service first then run frontend service 
 
+### Run Backend Service
+
+Open a terminal at project folder and then
+0. Enter backend folder
+   ```bash
+   cd backend
+   ```
 1. Install dependencies
     ```bash
     npm install
@@ -39,3 +46,26 @@ To test and run this project, open a terminal at project folder and then
     ```bash
     npx pm2 stop image-processing-api
     ```
+
+
+### Run Frontend Service
+
+Open another terminal at project folder and then
+0. Enter backend folder
+   ```bash
+   cd frontend
+   ```
+1. Install Angular CLI
+   ```bash
+   npm install -g @angular/cli
+   ```
+2. Install dependencies
+    ```bash
+    npm install
+    ```
+3. Run application in development mode
+    ```bash
+    ng serve
+    ```
+
+
