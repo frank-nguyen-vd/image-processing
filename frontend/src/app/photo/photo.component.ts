@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { Photo } from '../models/photo';
 import { PhotoService } from '../shared/photo.service';
 
@@ -7,21 +7,26 @@ import { PhotoService } from '../shared/photo.service';
     templateUrl: './photo.component.html',
     styleUrls: ['./photo.component.css']
 })
-export class PhotoComponent implements OnInit {
+export class PhotoComponent implements OnChanges {
     @Input() photo: Photo;
+    @Input() width: number;
+    @Input() height: number;
     thumbnail: string = '';
+
     constructor(private photoService: PhotoService) {
         this.photo = {
             id: 0,
             name: ''
         };
+        this.width = 0;
+        this.height = 0;
     }
 
-    ngOnInit(): void {
+    ngOnChanges(): void {
         this.thumbnail = this.photoService.getPhotoWithSize(
             this.photo.name,
-            200,
-            200
+            this.width,
+            this.height
         );
     }
 }
