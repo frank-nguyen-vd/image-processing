@@ -18,9 +18,10 @@ imagesController.get(
 
         // Get a list of filename in a folder
         let files;
+        let names;
         try {
             files = await file.listFilesInDir(originalDir);
-            files = files.map((filename) => file.splitNameAndExt(filename)[0]);
+            names = files.map((filename) => file.splitNameAndExt(filename)[0]);
         } catch {
             log.error("Folder 'assets' does not exist");
             // Handle scenario which folder `assets` does not exist
@@ -32,7 +33,7 @@ imagesController.get(
         // Return the list of filename if no target filename is given
         if (typeof req.query.filename != 'string') {
             return res.status(200).json(
-                files.map((item, index) => {
+                names.map((item, index) => {
                     return { id: index, name: item };
                 })
             );
@@ -43,8 +44,7 @@ imagesController.get(
             files,
             req.query.filename as string
         );
-        const imageName = foundImage;
-        const imageExt = 'jpg';
+        const [imageName, imageExt] = file.splitNameAndExt(foundImage);
 
         if (foundImage === '') {
             return res.status(404).json({
@@ -80,7 +80,6 @@ imagesController.get(
         const scaledImage = imageName + `_${width}x${height}.` + imageExt;
         const scaledImagePath = scaledDir + '/' + scaledImage;
         const originalImagePath = originalDir + '/' + foundImage;
-
         try {
             await image.createScaledImage(
                 originalImagePath,
