@@ -31,7 +31,11 @@ imagesController.get(
 
         // Return the list of filename if no target filename is given
         if (typeof req.query.filename != 'string') {
-            return res.status(200).json(files);
+            return res.status(200).json(
+                files.map((item, index) => {
+                    return { id: index, name: item };
+                })
+            );
         }
 
         // Return only one image that matches given `filename`
