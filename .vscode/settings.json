@@ -1,0 +1,5 @@
+{
+    "editor.formatOnSave": true,    
+    "bookmarks.useWorkaroundForFormatters": true,
+    "markdown.extension.tableFormatter.normalizeIndentation": true
+}
