@@ -13,7 +13,10 @@ const scaledDir = assetsDir + '/scaled';
 const imagesController = express.Router();
 imagesController.get(
     '/',
-    async (req: express.Request, res: express.Response) => {
+    async (
+        req: express.Request,
+        res: express.Response
+    ): Promise<express.Response | undefined> => {
         log.debug('Endpoint is called');
 
         // Get a list of filename in a folder
