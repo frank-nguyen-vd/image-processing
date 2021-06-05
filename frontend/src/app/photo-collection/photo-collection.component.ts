@@ -1,4 +1,4 @@
-import { Component, Injectable, OnInit } from '@angular/core';
+import { Component, Injectable, OnChanges, OnInit } from '@angular/core';
 import { PhotoService } from '../shared/photo.service';
 import { Photo } from '../models/photo';
 
@@ -10,6 +10,7 @@ import { Photo } from '../models/photo';
 })
 export class PhotoCollectionComponent implements OnInit {
     photos: Photo[] = [];
+    photosPerRow: number = 0;
 
     constructor(private photoService: PhotoService) {}
 
@@ -17,5 +18,9 @@ export class PhotoCollectionComponent implements OnInit {
         this.photoService.getPhotoNames().subscribe((res) => {
             this.photos = res;
         });
+    }
+
+    updateSetting(event: any) {
+        this.photosPerRow = event.value;
     }
 }

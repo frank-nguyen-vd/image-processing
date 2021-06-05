@@ -6,10 +6,18 @@ import { AppComponent } from './app.component';
 import { PhotoCollectionComponent } from './photo-collection/photo-collection.component';
 import { PhotoComponent } from './photo/photo.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatSliderModule } from '@angular/material/slider';
 @NgModule({
     declarations: [AppComponent, PhotoCollectionComponent, PhotoComponent],
-    imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        MatGridListModule,
+        MatSliderModule
+    ],
     providers: [],
     bootstrap: [AppComponent]
 })

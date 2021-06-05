@@ -1,4 +1,15 @@
 <h3>List of photos</h3>
-<ul>
-    <app-photo *ngFor="let photo of photos" [photo]="photo"></app-photo>
-</ul>
+Zoom
+<mat-slider
+    min="1"
+    max="10"
+    step="1"
+    aria-label="units"
+    (change)="updateSetting($event)"
+></mat-slider>
+
+<mat-grid-list cols="{{ photosPerRow }}" rowHeight="1:1" col>
+    <mat-grid-tile *ngFor="let photo of photos" colspan="1" rowspan="1">
+        <app-photo [photo]="photo"></app-photo>
+    </mat-grid-tile>
+</mat-grid-list>
