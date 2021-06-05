@@ -20,21 +20,18 @@ imagesController.get(
         let files;
         try {
             files = await file.listFilesInDir(originalDir);
+            files = files.map((filename) => file.splitNameAndExt(filename)[0]);
         } catch {
             log.error("Folder 'assets' does not exist");
             // Handle scenario which folder `assets` does not exist
             return res.status(500).json({
-                success: false,
                 error: "Folder 'assets' does not exist"
             });
         }
 
         // Return the list of filename if no target filename is given
         if (typeof req.query.filename != 'string') {
-            return res.status(200).json({
-                success: true,
-                images: files
-            });
+            return res.status(200).json(files);
         }
 
         // Return only one image that matches given `filename`
@@ -42,11 +39,11 @@ imagesController.get(
             files,
             req.query.filename as string
         );
-        const [imageName, imageExt] = file.splitNameAndExt(foundImage);
+        const imageName = foundImage;
+        const imageExt = 'jpg';
 
         if (foundImage === '') {
             return res.status(404).json({
-                success: false,
                 error: 'Image not found'
             });
         }
@@ -71,7 +68,6 @@ imagesController.get(
                 width = parseParam(req.query.width as string);
         } catch {
             return res.status(400).json({
-                success: false,
                 error: 'Image dimensions must be non-negative integers'
             });
         }
@@ -91,7 +87,6 @@ imagesController.get(
         } catch {
             log.error('Error while creating the scaled image');
             return res.status(500).json({
-                success: false,
                 error: 'Error while creating the scaled image'
             });
         }
