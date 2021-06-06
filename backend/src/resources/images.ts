@@ -59,7 +59,7 @@ imagesController.get(
         let height = 0;
         let width = 0;
         try {
-            const parseParam = (param: string) => {
+            const parseParam = (param: string): number => {
                 if (!/^[0-9]+$/.test(param)) {
                     throw new Error();
                 }
@@ -100,7 +100,7 @@ imagesController.get(
         const options = {
             root: path.join(process.cwd(), scaledDir)
         };
-        res.status(201).sendFile(scaledImage, options, (err) => {
+        res.status(201).sendFile(scaledImage, options, (err): void => {
             if (err) log.error(`While sending file, ${err}`);
             else log.debug('Scaled image is sent');
         });
