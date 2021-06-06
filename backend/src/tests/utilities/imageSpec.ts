@@ -1,7 +1,7 @@
 import * as image from '../../utilities/image';
 import fs from 'fs';
 
-fdescribe('Helper functions to work with images', () => {
+describe('Helper functions to work with images', () => {
     describe('Function createScaledImage()', () => {
         it('can create a thumbnail size 200 x 200 pixels of image "sunrise"', async () => {
             const originalImagePath = "./assets/original/sunrise.jpeg";
