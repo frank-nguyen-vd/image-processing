@@ -50,7 +50,7 @@
         "cors": "^2.8.5",
         "express": "^4.17.1",
         "log4js": "^6.3.0",
-        "sharp": "^0.28.3",
+        "sharp": "^0.30.5",
         "swagger-ui-express": "^4.1.6",
         "yamljs": "^0.3.0"
     }
